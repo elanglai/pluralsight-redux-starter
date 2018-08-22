@@ -10,28 +10,28 @@ class AboutPage extends React.Component {
     super(props, context);
 
     // Initialize state
-    this.state = {
-      course: { title: "" }
-    };
+    // this.state = {
+    //   course: { title: "" }
+    // };
 
     // call our bind functions to this component.
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
+    // this.onTitleChange = this.onTitleChange.bind(this);
+    // this.onClickSave = this.onClickSave.bind(this);
   }
 
   // -- Start Child functions
-  onTitleChange(event) {
-    const course = this.state.course;
-    course.title = event.target.value;
-    this.setState({course: course});
-  }
+  // onTitleChange(event) {
+  //   //   const course = this.state.course;
+  //   //   course.title = event.target.value;
+  //   //   this.setState({course: course});
+  //   // }
 
-  onClickSave() {
-    // We're dispatching an action
-    //this.props.dispatch(courseActions.createCourse(this.state.course));
-    //this.props.createCourse(this.state.course);
-    this.props.actions.createCourse(this.state.course);
-  }
+  // onClickSave() {
+  //   // We're dispatching an action
+  //   //this.props.dispatch(courseActions.createCourse(this.state.course));
+  //   //this.props.createCourse(this.state.course);
+  //   this.props.actions.createCourse(this.state.course);
+  // }
 
   courseRow(course, index) {
     return <div key={index}>{course.title}</div>;
@@ -44,16 +44,16 @@ class AboutPage extends React.Component {
       <div>
         <h1>Courses</h1>
         {this.props.courses.map(this.courseRow)}
-        <h2>Add Course</h2>
-        <input
-          type="text"
-          onChange={this.onTitleChange}
-          value={this.state.course.title} />
-        <input
-          type="submit"
-          value="Save"
-          onClick={this.onClickSave}
-        />
+        {/*<h2>Add Course</h2>*/}
+        {/*<input*/}
+          {/*type="text"*/}
+          {/*onChange={this.onTitleChange}*/}
+          {/*value={this.state.course.title} />*/}
+        {/*<input*/}
+          {/*type="submit"*/}
+          {/*value="Save"*/}
+          {/*onClick={this.onClickSave}*/}
+        {/*/>*/}
       </div>
     );
   }
