@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
+import CourseList from '../course/CourseList';
 
 class AboutPage extends React.Component {
 
@@ -38,22 +39,15 @@ class AboutPage extends React.Component {
   }
   // -- End Child functions
 
-  // Note: To Refactor.. Container component typically call a child component that just cares of the html render.
+  // Note: To Refactor.. Container component typically call a child "Presentation style" component that just cares of the html render.
   render() {
+    // using de-structuring to keep the calls short
+    const {courses} = this.props;
     return (
       <div>
         <h1>Courses</h1>
-        {this.props.courses.map(this.courseRow)}
-        {/*<h2>Add Course</h2>*/}
-        {/*<input*/}
-          {/*type="text"*/}
-          {/*onChange={this.onTitleChange}*/}
-          {/*value={this.state.course.title} />*/}
-        {/*<input*/}
-          {/*type="submit"*/}
-          {/*value="Save"*/}
-          {/*onClick={this.onClickSave}*/}
-        {/*/>*/}
+        {/* 'courses' instead of 'this.props.courses'*/}
+        <CourseList courses={courses}/>
       </div>
     );
   }
