@@ -63,13 +63,13 @@ AboutPage.propTypes = {
 
 // -- Start Redux function and related functions
 function mapStateToProps(state, ownProps) {
-  debugger;
+  // debugger;
   return {
     courses: state.courses
   };
 }
 function mapDispatchToProps(dispatch) {
-  debugger;
+  // debugger;
   return {
     //createCourse: course => dispatch(courseActions.createCourse(course))
     actions: bindActionCreators(courseActions, dispatch)
