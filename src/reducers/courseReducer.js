@@ -12,7 +12,7 @@ export default function courseReducer(state = initialState.courses, action) {
       return [
         // spread the state fields
         ...state,
-        Object.assign({}. action.course)
+        Object.assign({}, action.course)
       ];
 
     case types.UPDATE_COURSE_SUCCESS:

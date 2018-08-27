@@ -3,41 +3,24 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from '../course/CourseList';
+import {browserHistory} from 'react-router';
 
 class AboutPage extends React.Component {
 
   // component constructor
   constructor(props, context) {
     super(props, context);
-
-    // Initialize state
-    // this.state = {
-    //   course: { title: "" }
-    // };
-
-    // call our bind functions to this component.
-    // this.onTitleChange = this.onTitleChange.bind(this);
-    // this.onClickSave = this.onClickSave.bind(this);
+    this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
-
-  // -- Start Child functions
-  // onTitleChange(event) {
-  //   //   const course = this.state.course;
-  //   //   course.title = event.target.value;
-  //   //   this.setState({course: course});
-  //   // }
-
-  // onClickSave() {
-  //   // We're dispatching an action
-  //   //this.props.dispatch(courseActions.createCourse(this.state.course));
-  //   //this.props.createCourse(this.state.course);
-  //   this.props.actions.createCourse(this.state.course);
-  // }
 
   courseRow(course, index) {
     return <div key={index}>{course.title}</div>;
   }
   // -- End Child functions
+
+  redirectToAddCoursePage() {
+    browserHistory.push('/course');
+  }
 
   // Note: To Refactor.. Container component typically call a child "Presentation style" component that just cares of the html render.
   render() {
@@ -46,7 +29,10 @@ class AboutPage extends React.Component {
     return (
       <div>
         <h1>Courses</h1>
-        {/* 'courses' instead of 'this.props.courses'*/}
+        <input  type="submit"
+                value="Add Course"
+                className="btn btn-primary"
+                onClick={this.redirectToAddCoursePage}/>
         <CourseList courses={courses}/>
       </div>
     );
