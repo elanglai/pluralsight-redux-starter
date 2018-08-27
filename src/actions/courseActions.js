@@ -28,7 +28,7 @@ export function saveCourse(course) {
   return function(dispatch, getState) {
     return courseApi.saveCourse(course).then(savedCourse => {
       // Either update or create a course
-      course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSucess(savedCourse));
+      course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
       throw(error);
     });
