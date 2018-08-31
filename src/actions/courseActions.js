@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
+import {beginAjaxCall} from './ajaxStatusAction';
 
 export function loadCoursesSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses};
@@ -14,6 +15,7 @@ export function createCourseSuccess(course) {
 
 export function loadCourses() {
   return function(dispatch) {
+    dispatch(beginAjaxCall());
     // getAllCourses returns a promise.
     return courseApi.getAllCourses().then(courses => {
       dispatch(loadCoursesSuccess(courses));
@@ -26,6 +28,7 @@ export function loadCourses() {
 export function saveCourse(course) {
   // The getState can be used to access the redux store directly
   return function(dispatch) {
+    dispatch(beginAjaxCall());
     return courseApi.saveCourse(course).then(savedCourse => {
       // Either update or create a course
       course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
