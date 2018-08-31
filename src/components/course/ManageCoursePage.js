@@ -12,7 +12,8 @@ class ManageCoursePage extends React.Component {
 
     this.state = {
       course: Object.assign({}, props.course),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     // bind the event handler to the proper this context
@@ -41,11 +42,18 @@ class ManageCoursePage extends React.Component {
     return this.setState({course: course});
   }
 
+  redirect() {
+    this.context.router.push('/courses');
+    this.setState({saving: false});
+  }
+
   saveCourse(event) {
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    this.setState({saving: true});
+    this.props.actions.saveCourse(this.state.course)
+        .then(() => this.redirect());
     // using React router's context to redirect to the courses url
-    this.context.router.push('/courses');
+
   }
 
   render() {
@@ -56,6 +64,7 @@ class ManageCoursePage extends React.Component {
           onSave={this.saveCourse}
           course={this.state.course}
           errors={this.state.errors}
+          saving={this.state.saving}
         />
     );
   }
