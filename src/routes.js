@@ -4,6 +4,7 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import CoursesPage from './components/course/CoursesPage';
+// eslint-disable-next-line import/no-named-as-default
 import ManageCoursePage from './components/course/ManageCoursePage';
 
 export default (
